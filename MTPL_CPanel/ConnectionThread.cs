@@ -34,9 +34,11 @@ namespace MTPL_CPanel
         public void Execute(params string[] args)
         {
             this.args = args;
-            apt = (Frm_Main)_SENDER;
+            if (!args[0].Equals("6")) {
+                apt = (Frm_Main)_SENDER;
+                apt.Enabled = false;
+            }
             LoadingScreen = new Frm_LoadingScreen();
-            apt.Enabled = false;
             LoadingScreen.Show();
             RunWorkerAsync();
         }
@@ -72,7 +74,7 @@ namespace MTPL_CPanel
                     request = (HttpWebRequest)WebRequest.Create("https://mawlatelecom.com/shop/pricelist/resources/api/phone_remover.php");
                     postData += "&phoneid=" +args[1];
                     break;
-                    case "5":
+                case "5":
                     request = (HttpWebRequest)WebRequest.Create("https://mawlatelecom.com/shop/pricelist/resources/api/phone_updater.php");
                     postData += "&phoneid=" + args[1];
                     postData += "&phonename=" + args[2];
@@ -81,6 +83,18 @@ namespace MTPL_CPanel
                     postData += "&phonehidden=" + args[5];
                     postData += "&brandid=" + args[6];
                     break;
+
+                case "6":
+                    request = (HttpWebRequest)WebRequest.Create("https://mawlatelecom.com/shop/pricelist/resources/api/brand_adder.php");
+                    postData += "&brandname=" + args[1];
+                    postData += "&brandhidden=" + args[2];
+                    break;
+
+                case "7":
+                    request = (HttpWebRequest)WebRequest.Create("https://mawlatelecom.com/shop/pricelist/resources/api/brand_remover.php");
+                    postData += "&brandid=" + args[1];
+                    break;
+
                 default:
                     request = null;
                     break;
@@ -118,6 +132,7 @@ namespace MTPL_CPanel
                         }
                         while ((responseString = reader.ReadLine()) != null);
                         break;
+                        
                 }
             }
             else 
@@ -160,9 +175,15 @@ namespace MTPL_CPanel
                 case "5":
                     apt.Refreshphones();
                     break;
+
             }
             LoadingScreen.Hide();
-            apt.Enabled = true;
+            if (!args[0].Equals("6"))
+            {
+                apt.Enabled = true;
+
+                
+            }
             base.OnRunWorkerCompleted(e);
         }
         protected override void OnProgressChanged(ProgressChangedEventArgs e)

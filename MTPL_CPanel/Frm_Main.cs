@@ -22,9 +22,16 @@ namespace MTPL_CPanel
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue800, Primary.Blue900, Primary.Blue500, Accent.Red200, TextShade.WHITE);
             Refreshphones();
+            Refreshbrands();
+            
+            this.dgv.Click += new EventHandler(Dgv_CellContentClick);
+        }
+        public void Refreshbrands()
+        {
+            cbox_brand.Items.Clear();
             ConnectionThread ct2 = new ConnectionThread(this);
             ct2.Execute("3");
-            this.dgv.Click += new EventHandler(Dgv_CellContentClick);
+
         }
         public void Refreshphones()
         {
@@ -105,6 +112,22 @@ namespace MTPL_CPanel
             Btn_ResetNew.Visible = false;
             Btn_DeletePhone.Visible = true;
             Btn_UpdatePhone.Visible = true;
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            Brands brands = new Brands();
+            brands.ShowDialog();
+            Refreshbrands();
+        }
+
+        private void materialFlatButton2_Click(object sender, EventArgs e)
+        {
+            ConnectionThread ct = new ConnectionThread(this);
+            ComboBox_ItemRow the_item = (ComboBox_ItemRow)cbox_brand.SelectedItem;
+            ct.Execute("7",the_item.getId());
+            Refreshbrands();
+            Refreshphones();
         }
     }
 }
