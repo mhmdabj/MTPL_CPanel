@@ -129,6 +129,12 @@ namespace MTPL_CPanel
             Refreshbrands();
             Refreshphones();
         }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            Frm_ImageManagement imageManagement = new Frm_ImageManagement();
+            imageManagement.ShowDialog();
+        }
     }
 }
 

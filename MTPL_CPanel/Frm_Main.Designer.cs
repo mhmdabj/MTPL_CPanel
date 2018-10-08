@@ -51,6 +51,7 @@
             this.Btn_ResetNew = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.materialFlatButton2 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.edit_image = new MaterialSkin.Controls.MaterialRaisedButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txt_price)).BeginInit();
             this.SuspendLayout();
@@ -356,12 +357,29 @@
             this.materialFlatButton2.UseVisualStyleBackColor = true;
             this.materialFlatButton2.Click += new System.EventHandler(this.materialFlatButton2_Click);
             // 
+            // edit_image
+            // 
+            this.edit_image.AutoSize = true;
+            this.edit_image.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.edit_image.Depth = 0;
+            this.edit_image.Icon = null;
+            this.edit_image.Location = new System.Drawing.Point(338, 172);
+            this.edit_image.MouseState = MaterialSkin.MouseState.HOVER;
+            this.edit_image.Name = "edit_image";
+            this.edit_image.Primary = true;
+            this.edit_image.Size = new System.Drawing.Size(95, 36);
+            this.edit_image.TabIndex = 35;
+            this.edit_image.Text = "Edit Image";
+            this.edit_image.UseVisualStyleBackColor = true;
+            this.edit_image.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            // 
             // Frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(717, 492);
+            this.Controls.Add(this.edit_image);
             this.Controls.Add(this.materialFlatButton2);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.label3);
@@ -410,6 +428,7 @@
         private MaterialSkin.Controls.MaterialFlatButton Btn_ResetNew;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton2;
+        private MaterialSkin.Controls.MaterialRaisedButton edit_image;
     }
 }
 
