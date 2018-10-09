@@ -25,9 +25,19 @@ namespace MTPL_CPanel
 
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                picbox_new.Image= new Bitmap(ofd.FileName);
+                string ext = System.IO.Path.GetExtension(ofd.FileName);
+                if (ext == ".jpg")
+                {
+                    picbox_new.Image = new Bitmap(ofd.FileName);
+                    pic_name.Text = ofd.FileName;
+                }
+                else
+                    MessageBox.Show("Choose only jpg");
+
             }
-            pic_name.Text = ofd.FileName;
+
+            
+            
             ofd.Dispose();
         }
     }

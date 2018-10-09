@@ -135,6 +135,8 @@ namespace MTPL_CPanel
             Frm_ImageManagement imageManagement = new Frm_ImageManagement();
             imageManagement.ShowDialog();
         }
+
+        
     }
 }
 
